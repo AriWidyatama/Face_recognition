@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Face Recognition System</h1>
+            <p>Advanced biometric authentication with liveness detection</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('add-user')">
+                👤 Add User
+            </button>
+            <button class="nav-tab" onclick="switchTab('recognition')">
+                🎯 Recognition
+            </button>
+        </div>
+
+        <div class="content">
+            <!-- Add User Tab -->
+            <div id="add-user" class="tab-content active">
+                <h2>Add New User</h2>
+                <p>Position your face within the circle and enter your name to register.</p>
+                
+                <div class="camera-container">
+                    <video id="add-video" autoplay muted></video>
+                    <div class="camera-overlay"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Full Name</label>
+                    <input type="text" id="username" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="controls">
+                    <button id="start-add-camera" class="btn">📷 Start Camera</button>
+                    <button id="capture-add" class="btn btn-success hidden">📸 Capture & Add User</button>
+                    <button id="stop-add-camera" class="btn btn-danger hidden">🚫 Stop Camera</button>
+                </div>
+
+                <div id="add-message"></div>
+            </div>
+
+            <!-- Recognition Tab -->
+            <div id="recognition" class="tab-content">
+                <h2>Face Recognition</h2>
+                <p>Stand in front of the camera for automatic recognition and liveness check.</p>
+                
+                <div class="camera-container">
+                    <video id="rec-video" autoplay muted></video>
+                    <div class="camera-overlay"></div>
+                </div>
+
+                <div class="progress-bar hidden" id="progress-container">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+
+                <div id="blink-instruction" class="blink-instruction hidden">
+                    👁️ Please blink naturally for liveness verification
+                </div>
+
+                <div class="controls">
+                    <button id="start-rec-camera" class="btn">🎯 Start Recognition</button>
+                    <button id="stop-rec-camera" class="btn btn-danger hidden">🚫 Stop</button>
+                </div>
+
+                <div id="rec-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
